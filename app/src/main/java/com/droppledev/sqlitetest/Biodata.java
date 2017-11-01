@@ -7,22 +7,22 @@ package com.droppledev.sqlitetest;
 
 public class Biodata {
 
-    int id;
-    String name, location;
+    private int id;
+    private String name, location;
 
-    public Biodata(){
+    Biodata(){
 
     }
-    public Biodata(int id){
+    Biodata(int id){
         this.id = id;
     }
 
-    public Biodata(String name, String location){
+    Biodata(String name, String location){
         this.name = name;
         this.location = location;
     }
 
-    public Biodata(int id, String name, String location){
+    Biodata(int id, String name, String location){
         this.id = id;
         this.name = name;
         this.location = location;
@@ -43,11 +43,11 @@ public class Biodata {
         this.name = name;
     }
 
-    public String getLocation() {
+    String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    void setLocation(String location) {
         this.location = location;
     }
 }

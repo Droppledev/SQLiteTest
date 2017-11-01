@@ -10,17 +10,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvId"
-        tools:text="id"/>
+        android:text="id"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvNama"
-        tools:text="nama"/>
+        android:text="nama"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvLokasi"
-        tools:text="lokasi"/>
+        android:text="lokasi"/>
 
 </LinearLayout>

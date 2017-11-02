@@ -54,40 +54,49 @@ public class DatabaseActivity extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name = etName.getText().toString();
-                location = etLocation.getText().toString();
-                id = Integer.parseInt(etId.getText().toString());
-                dbHandler.updateBiodata(new Biodata(id,name,location));
-                Toast.makeText(DatabaseActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                if (etId.getText().toString().equals("")){
+                    etId.setError("ID diperlukan untuk edit data!");
+                }
+                else {
+                    name = etName.getText().toString();
+                    location = etLocation.getText().toString();
+                    id = Integer.parseInt(etId.getText().toString());
+                    dbHandler.updateBiodata(new Biodata(id, name, location));
+                    Toast.makeText(DatabaseActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                id = Integer.parseInt(etId.getText().toString());
-                dbHandler.deleteBiodata(new Biodata(id));
-                Toast.makeText(DatabaseActivity.this, "Success", Toast.LENGTH_SHORT).show();
-
+                if (etId.getText().toString().equals("")){
+                    etId.setError("ID diperlukan untuk delete data!");
+                }
+                else {
+                    id = Integer.parseInt(etId.getText().toString());
+                    dbHandler.deleteBiodata(new Biodata(id));
+                }
             }
         });
 
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                id = Integer.parseInt(etId.getText().toString());
-                ArrayList<Biodata> biodataList = dbHandler.getAllBiodata();
-                //Log.d("btnGet", "Belum For ");
-                for (Biodata biodata: biodataList){
-                    if (biodata.getId() == id) {
-                        etName.setText(biodata.getName(),TextView.BufferType.EDITABLE);
-                        etLocation.setText(biodata.getLocation(),TextView.BufferType.EDITABLE);
-                        //Log.d("btnGet", "masuk if ");
-                        //Toast.makeText(DatabaseActivity.this, "masuk if", Toast.LENGTH_SHORT).show();
-                        break;
+                if (etId.getText().toString().equals("")){
+                    etId.setError("ID diperlukan untuk get data!");
+                }
+                else {
+                    id = Integer.parseInt(etId.getText().toString());
+                    ArrayList<Biodata> biodataList = dbHandler.getAllBiodata();
+                    for (Biodata biodata : biodataList) {
+                        if (biodata.getId() == id) {
+                            etName.setText(biodata.getName());
+                            etLocation.setText(biodata.getLocation());
+                            break;
+                        }
                     }
                 }
-                //Log.d("btnGet", "sudah For ");
 
             }
         });

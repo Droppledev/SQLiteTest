@@ -20,12 +20,7 @@ public class MainActivity extends AppCompatActivity {
         dbHandler = new DBHandler(this);
 
         ArrayList<Biodata> biodataList = dbHandler.getAllBiodata();
-        ArrayList<Biodata> list = new ArrayList<>();
-        for (Biodata biodata: biodataList){
-            list.add(new Biodata(biodata.getId(),biodata.getName(),biodata.getLocation()));
-        }
-        //list.add(new Biodata(1,"coba","tc"));
-        ListViewAdapter itemsAdapter = new ListViewAdapter(this, list);
+        ListViewAdapter itemsAdapter = new ListViewAdapter(this, biodataList);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
 
